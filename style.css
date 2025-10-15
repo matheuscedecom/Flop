@@ -1,0 +1,126 @@
+/* Garante que o corpo ocupe a tela inteira, sem margens ou rolagem */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Impede a barra de rolagem */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Define o mapa para ocupar a tela inteira, no fundo */
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0; /* Coloca o mapa atrás de outros elementos */
+}
+
+/* Container flutuante para a interface do usuário (CORRIGIDO) */
+#ui-container {
+    position: fixed; /* Garante que ele flutue sobre TUDO na tela */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000; /* Aumentamos a prioridade para garantir que fique na frente */
+
+    width: 90%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Container da busca e do grupo de botões */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 150px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.button-group button {
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.button-group button:hover {
+    transform: scale(1.05);
+}
+
+#search-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+#add-current-location-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Área de resultados */
+#results-info {
+    background-color: rgba(233, 236, 239, 0.8);
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    color: #333;
+}
+
+/* Media Query para telas de tablet e mobile */
+@media (max-width: 768px) {
+    #ui-container {
+        width: 95%;
+        bottom: 10px;
+        padding: 15px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .button-group {
+        display: flex;
+        width: 100%;
+    }
+    
+    .button-group button {
+        flex: 1; 
+        padding: 14px 10px;
+        font-size: 17px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+}

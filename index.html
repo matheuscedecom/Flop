@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Pontos em BH</title>
+    
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <div id="ui-container">
+        <h1>Busca de Pontos</h1>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Digite uma rua ou bairro...">
+            
+            <div class="button-group">
+                <button id="search-btn">Buscar</button>
+                <button id="add-current-location-btn" title="Adicionar Posição Atual">📍 Adicionar</button>
+            </div>
+        </div>
+
+        <div id="results-info">
+            <p>Busque um endereço ou adicione sua localização atual.</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
